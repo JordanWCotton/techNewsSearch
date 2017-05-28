@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const list = [
@@ -57,12 +56,14 @@ class App extends Component {
 
   render() {
     const { searchTerm, list } = this.state;
-    return (
+    return ( 
       <div className="App">
         <Search 
         value={searchTerm}
         onChange={this.onSearchChange}
-        />
+        >
+          Search:
+        </Search>
         <Table 
         list={list}
         pattern={searchTerm}
@@ -75,10 +76,10 @@ class App extends Component {
 
 class Search extends Component {
   render() {
-    const { value, onChange } = this.props; //Getting these from parent component, passed on the tag
+    const { value, onChange, children } = this.props; //Getting these from parent component, passed on the tag
     return (
       <form>
-        <input
+        {children} <input //Uses children to display elements passed from the parent component
         type="text"
         value={value}
         onChange={onChange}
@@ -127,6 +128,6 @@ export default App;
   -Searching, which returns real-time results for matching
   -Setting an uncontrolled component 'html input's value' to be a controlled component
   -Splitting up components
-
+  -Passing elements from parent to child components
 
 */
