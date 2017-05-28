@@ -17,6 +17,22 @@ const list = [
     num_comments: 2,
     points: 5,
     objectID: 1
+  },
+  {
+    title: 'angular',
+    url: 'https://angular.io/docs/ts/latest/',
+    author: 'Google',
+    num_comments: 4,
+    points: 10,
+    objectID: 2
+  },
+  {
+    title: 'typescript',
+    url: 'https://www.typescriptlang.org/docs/home.html',
+    author: 'Microsoft',
+    num_comments: 11,
+    points: 2,
+    objectID: 3
   }
 ];
 
