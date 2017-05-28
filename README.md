@@ -1,4 +1,4 @@
-I created this project as a code sandbox to practice and learn react components. I am new to React having been an Angular fanatic, but I have finally decided to give React a shot. I am attempting to use commits and branching as a way to mark different feature/concept changes that I learn as I go, using them as reference later. I will also be leaving this ridiculous README below that create-react-app so graciously gave me upon bootstrapping this project, as there are a few topics I wish to peruse further. 
+I created this project as a code sandbox to practice and learn React. I am new to React having been an Angular fanatic, but I have finally decided to give React a shot. I will be using commits and branching as a way to mark different feature/concept changes that I learn as I go, using them as reference for a later time. I will also be leaving this ridiculous README below that create-react-app so graciously gave me upon bootstrapping this project, as there are a few topics I wish to peruse further. 
 
 So please excuse the noobness of this particular repository.
 
