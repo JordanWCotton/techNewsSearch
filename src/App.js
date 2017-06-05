@@ -164,5 +164,5 @@ export default App;
   -Setting an uncontrolled component 'html input's value' to be a controlled component
   -Splitting up components
   -Passing elements from parent to child components
-
+  -Reusable components
 */
