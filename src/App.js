@@ -103,7 +103,7 @@ const Table = ({list, pattern, onDismiss}) => {
   return (
     <div>
       {list.filter(isSearched(pattern)).map(item => 
-      <div key={item.objectID}>
+      <div key={item.objectID} className="test-class">
         <span>
           <a href={item.url}>{item.title}</a>
         </span>
@@ -143,4 +143,5 @@ This project demonstrates the following:
   -Passing elements from parent to child components
   -Reusable components
   -Refactoring components without state into Functional Stateless Components
+  -Applying styles to components using className and CSS file
 */
