@@ -2,7 +2,16 @@
   text-align: center;
 }
 
-.test-class {
+.list-display {
   background-color: grey;
+  margin-bottom: 30px;
+}
+
+.list-display div {
+  margin-bottom: 5px;
+}
+
+.my-form {
+  margin-top: 15px;
   margin-bottom: 30px;
 }

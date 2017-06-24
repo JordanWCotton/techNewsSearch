@@ -91,7 +91,7 @@ class App extends Component {
 }
 
 const Search = ({value, onChange, children}) => 
-  <form>
+  <form className="my-form">
     {children} <input 
     type="text"
     value={value}
@@ -103,7 +103,7 @@ const Table = ({list, pattern, onDismiss}) => {
   return (
     <div>
       {list.filter(isSearched(pattern)).map(item => 
-      <div key={item.objectID} className="test-class">
+      <div key={item.objectID} className="list-display">
         <div>
           <a href={item.url}>{item.title}</a>
         </div>
