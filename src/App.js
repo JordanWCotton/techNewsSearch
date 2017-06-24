@@ -122,28 +122,6 @@ const Table = ({list, pattern, onDismiss}) => {
   );
 }
 
-/*
-class Button extends Component {
-  render() {
-    const { 
-      onClick,
-      className,
-      children
-    } = this.props;
-
-    return (
-      <button
-      onClick={onClick}
-      className={className}
-      type="button"
-      >
-       {children}
-       </button>
-    );
-  }
-}
-*/
-
 const Button = ({onClick, className = '', children}) => 
   <button 
   onClick={onClick}
@@ -155,7 +133,8 @@ const Button = ({onClick, className = '', children}) =>
 
 export default App;
 
-/* This demonstrates the following:
+/* 
+This project demonstrates the following:
   -Setting state
   -Deleting something from the state
   -Searching, which returns real-time results for matching
@@ -163,4 +142,5 @@ export default App;
   -Splitting up components
   -Passing elements from parent to child components
   -Reusable components
+  -Refactoring components without state into Functional Stateless Components
 */
