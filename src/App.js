@@ -3,7 +3,7 @@ import './App.css';
 
 const list = [
   {
-    title: 'react',
+    title: 'React',
     url: 'https://facebook.github.io/react/',
     author: 'Jordan Walke',
     num_comments: 3,
@@ -11,7 +11,7 @@ const list = [
     objectID: 0
   },
   {
-    title: 'redux',
+    title: 'Redux',
     url: 'https://github.com/reactjs/redux',
     author: 'Dan Abramov, Andrew Clark',
     num_comments: 2,
@@ -19,7 +19,7 @@ const list = [
     objectID: 1
   },
   {
-    title: 'angular',
+    title: 'Angular',
     url: 'https://angular.io/docs/ts/latest/',
     author: 'Google',
     num_comments: 4,
@@ -27,7 +27,7 @@ const list = [
     objectID: 2
   },
   {
-    title: 'typescript',
+    title: 'Typescript',
     url: 'https://www.typescriptlang.org/docs/home.html',
     author: 'Microsoft',
     num_comments: 11,
@@ -104,18 +104,18 @@ const Table = ({list, pattern, onDismiss}) => {
     <div>
       {list.filter(isSearched(pattern)).map(item => 
       <div key={item.objectID} className="test-class">
-        <span>
+        <div>
           <a href={item.url}>{item.title}</a>
-        </span>
-        <span>{item.author}</span>
-        <span>{item.num_comments}</span>
-        <span>{item.points}</span>
-        <span>
+        </div>
+        <div>{item.author}</div>
+        <div>{item.num_comments} comments</div>
+        <div>{item.points} points</div>
+        <div>
           <Button 
           onClick={() => onDismiss(item.objectID)}>
           Dismiss
           </Button>
-        </span>
+        </div>
       </div>
       )}
     </div>
