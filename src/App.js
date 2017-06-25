@@ -51,6 +51,8 @@ class App extends Component {
     const { searchTerm, result } = this.state;
 
     if (!result) { return null; }
+
+    console.log(result);
     
     return ( 
       <div className="App">
