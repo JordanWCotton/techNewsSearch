@@ -4,7 +4,8 @@ import './App.css';
 const isSearched = searchTerm => item =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
-const API_URL = 'https://hn.algolia.com/api/v1/search?query=redux';
+const API_URL = 'https://hn.algolia.com/api/v1/search?query=';
+const SEARCH_VAR = 'redux';
 
 class App extends Component {
 
@@ -13,7 +14,7 @@ class App extends Component {
 
     this.state = { //This allows state to be set.
       result: null,
-      searchTerm: 'redux', //Place a variable here in the future
+      searchTerm: SEARCH_VAR, //Place a variable here in the future
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -27,7 +28,7 @@ class App extends Component {
   }
 
   fetchSearchTopStories(searchTerm) {
-    fetch(API_URL)
+    fetch(API_URL + SEARCH_VAR)
      .then(response => response.json())
      .then(result => this.setSearchTopStories(result));
   }
@@ -52,8 +53,6 @@ class App extends Component {
 
     if (!result) { return null; }
 
-    console.log(result);
-    
     return ( 
       <div className="App">
         <Search 
