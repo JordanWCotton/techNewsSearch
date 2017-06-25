@@ -1,50 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const list = [
-  {
-    title: 'React',
-    url: 'https://facebook.github.io/react/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0
-  },
-  {
-    title: 'Redux',
-    url: 'https://github.com/reactjs/redux',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1
-  },
-  {
-    title: 'Angular',
-    url: 'https://angular.io/docs/ts/latest/',
-    author: 'Google',
-    num_comments: 4,
-    points: 10,
-    objectID: 2
-  },
-  {
-    title: 'Typescript',
-    url: 'https://www.typescriptlang.org/docs/home.html',
-    author: 'Microsoft',
-    num_comments: 11,
-    points: 2,
-    objectID: 3
-  }
-];
-
-/* function isSearched(searchTerm) { //This higher order function returns a function that returns true/false for filtering the list
-  return item => {
-    return !searchTerm || //Filters only when a searchTerm is actually set, then matches an item's title with the searchTerm, returning true if it does which allows it to stay in the list
-    item.title.toLowerCase().includes(searchTerm.toLowerCase());
-  }
-}; */
-//ES6 below, above is the equivalent function in ES5
 const isSearched = searchTerm => item =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+const API_URL = 'https://hn.algolia.com/api/v1/search?query=redux';
 
 class App extends Component {
 
@@ -52,12 +12,29 @@ class App extends Component {
     super(props);
 
     this.state = { //This allows state to be set.
-      list,
-      searchTerm: "",
+      result: null,
+      searchTerm: 'redux', //Place a variable here in the future
     };
 
+    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
     this.onDismiss = this.onDismiss.bind(this); //This is how you define methods to affect state
     this.onSearchChange = this.onSearchChange.bind(this);
+  }
+
+  setSearchTopStories(result) {
+    this.setState({result});
+  }
+
+  fetchSearchTopStories(searchTerm) {
+    fetch(API_URL)
+     .then(response => response.json())
+     .then(result => this.setSearchTopStories(result));
+  }
+
+  componentDidMount() {
+    const { searchTerm } = this.state;
+    this.fetchSearchTopStories(searchTerm);
   }
 
   onDismiss(id) { //Filters out the group by the ID that the button clicked passes in
@@ -71,7 +48,10 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, list } = this.state;
+    const { searchTerm, result } = this.state;
+
+    if (!result) { return null; }
+    
     return ( 
       <div className="App">
         <Search 
@@ -81,7 +61,7 @@ class App extends Component {
           Search:
         </Search>
         <Table 
-        list={list}
+        list={result.hits}
         pattern={searchTerm}
         onDismiss={this.onDismiss}
         />
