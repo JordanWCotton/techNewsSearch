@@ -21,6 +21,13 @@ class App extends Component {
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
     this.onDismiss = this.onDismiss.bind(this); //This is how you define methods to affect state
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+  }
+
+  onSearchSubmit(event) {
+    const { searchTerm } = this.state;
+    this.fetchSearchTopStories(searchTerm);
+    event.preventDefault(); //Prevents page reloading from submit callback
   }
 
   setSearchTopStories(result) {
@@ -28,7 +35,7 @@ class App extends Component {
   }
 
   fetchSearchTopStories(searchTerm) {
-    fetch(API_URL + SEARCH_VAR)
+    fetch(API_URL + searchTerm)
      .then(response => response.json())
      .then(result => this.setSearchTopStories(result));
   }
@@ -58,13 +65,13 @@ class App extends Component {
         <Search 
         value={searchTerm}
         onChange={this.onSearchChange}
+        onSubmit={this.onSearchSubmit}
         >
           Search:
         </Search>
         { result ? 
         <Table 
         list={result.hits}
-        pattern={searchTerm}
         onDismiss={this.onDismiss}
         />
         : null}
@@ -73,19 +80,22 @@ class App extends Component {
   }
 }
 
-const Search = ({value, onChange, children}) => 
-  <form className="my-form">
-    {children} <input 
+const Search = ({value, onChange, onSubmit, children}) => 
+  <form className="my-form" onSubmit={onSubmit}>
+    <input 
     type="text"
     value={value}
     onChange={onChange}
     />
+    <button type="submit">
+      {children}
+    </button>
   </form>
 
-const Table = ({list, pattern, onDismiss}) => {
+const Table = ({list, onDismiss}) => {
   return (
     <div>
-      {list.filter(isSearched(pattern)).map(item => 
+      {list.map(item => 
       <div key={item.objectID} className="list-display">
         <div>
           <a href={item.url}>{item.title}</a>
