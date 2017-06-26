@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const isSearched = searchTerm => item =>
-  !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+/* const isSearched = searchTerm => item =>
+  !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase()); */
 
 const API_URL = 'https://hn.algolia.com/api/v1/search?query=';
-const SEARCH_VAR = 'redux';
+const defaultSearch = 'redux';
 
 class App extends Component {
 
@@ -14,7 +14,7 @@ class App extends Component {
 
     this.state = { //This allows state to be set.
       result: null,
-      searchTerm: SEARCH_VAR, //Place a variable here in the future
+      searchTerm: defaultSearch, //Place a variable here in the future
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
