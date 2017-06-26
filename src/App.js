@@ -53,8 +53,6 @@ class App extends Component {
   render() {
     const { searchTerm, result } = this.state;
 
-    if (!result) { return null; }
-
     return ( 
       <div className="App">
         <Search 
@@ -63,11 +61,13 @@ class App extends Component {
         >
           Search:
         </Search>
+        { result ? 
         <Table 
         list={result.hits}
         pattern={searchTerm}
         onDismiss={this.onDismiss}
         />
+        : null}
       </div>
     );
   }
@@ -115,16 +115,3 @@ const Button = ({onClick, className = '', children}) =>
   </button>
 
 export default App;
-
-/* 
-This project demonstrates the following:
-  -Setting state
-  -Deleting something from the state
-  -Searching, which returns real-time results for matching
-  -Setting an uncontrolled component 'html input's value' to be a controlled component
-  -Splitting up components
-  -Passing elements from parent to child components
-  -Reusable components
-  -Refactoring components without state into Functional Stateless Components
-  -Applying styles to components using className and CSS file
-*/
