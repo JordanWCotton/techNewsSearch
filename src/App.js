@@ -19,7 +19,7 @@ class App extends Component {
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
-    this.onDismiss = this.onDismiss.bind(this); //This is how you define methods to affect state
+    this.onDismiss = this.onDismiss.bind(this); 
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
   }
@@ -27,7 +27,7 @@ class App extends Component {
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
     this.fetchSearchTopStories(searchTerm);
-    event.preventDefault(); //Prevents page reloading from submit callback
+    event.preventDefault(); //Prevents page reloading from form's submit callback
   }
 
   setSearchTopStories(result) {
@@ -45,7 +45,7 @@ class App extends Component {
     this.fetchSearchTopStories(searchTerm);
   }
 
-  onDismiss(id) { //Filters out the group by the ID that the button clicked passes in
+  onDismiss(id) { 
     const isNotId = item => item.objectID !== id; 
     const updatedHits = this.state.result.hits.filter(isNotId);  
     this.setState({ 
