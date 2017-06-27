@@ -3,9 +3,11 @@ import './App.css';
 
 const API_URL = 'https://hn.algolia.com/api/v1/search?query=';
 const PAGE_QUERY = '&page=';
+const PAGE_HPP = '&hitsPerPage=';
 
 const defaultPage = 0;
 const defaultSearch = 'redux';
+const defaultHPP = '40';
 
 class App extends Component {
 
@@ -46,7 +48,7 @@ class App extends Component {
   }
 
   fetchSearchTopStories(searchTerm, page) {
-    fetch(API_URL + searchTerm + PAGE_QUERY + page)
+    fetch(API_URL + searchTerm + PAGE_QUERY + page + PAGE_HPP + defaultHPP)
      .then(response => response.json())
      .then(result => this.setSearchTopStories(result));
   }
