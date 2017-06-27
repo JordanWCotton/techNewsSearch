@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-/* const isSearched = searchTerm => item =>
-  !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase()); */
-
 const API_URL = 'https://hn.algolia.com/api/v1/search?query=';
+const PAGE_QUERY = '&page=';
+
+const defaultPage = 0;
 const defaultSearch = 'redux';
 
 class App extends Component {
@@ -26,23 +26,34 @@ class App extends Component {
 
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
-    this.fetchSearchTopStories(searchTerm);
+    this.fetchSearchTopStories(searchTerm, defaultPage);
     event.preventDefault(); //Prevents page reloading from form's submit callback
   }
 
   setSearchTopStories(result) {
-    this.setState({result});
+    const { hits, page } = result;
+
+    const oldHits = page !== 0 ? this.state.result.hits : [];
+
+    const updatedHits = [
+      ...oldHits,
+      ...hits
+    ];
+
+    this.setState({
+      result: { hits: updatedHits, page}
+    });
   }
 
-  fetchSearchTopStories(searchTerm) {
-    fetch(API_URL + searchTerm)
+  fetchSearchTopStories(searchTerm, page) {
+    fetch(API_URL + searchTerm + PAGE_QUERY + page)
      .then(response => response.json())
      .then(result => this.setSearchTopStories(result));
   }
 
   componentDidMount() {
     const { searchTerm } = this.state;
-    this.fetchSearchTopStories(searchTerm);
+    this.fetchSearchTopStories(searchTerm, defaultPage);
   }
 
   onDismiss(id) { 
@@ -59,6 +70,7 @@ class App extends Component {
 
   render() {
     const { searchTerm, result } = this.state;
+    const page = (result && result.page) || 0; 
 
     return ( 
       <div className="App">
@@ -75,6 +87,11 @@ class App extends Component {
         onDismiss={this.onDismiss}
         />
         : null}
+        <div>
+          <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+            More
+          </Button>
+        </div>
       </div>
     );
   }
