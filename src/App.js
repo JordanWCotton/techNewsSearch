@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 const API_URL = 'https://hn.algolia.com/api/v1/search?query=';
@@ -166,5 +167,11 @@ const Button = ({onClick, className = '', children}) =>
   >
    {children}
   </button>
+
+  Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+  };
 
 export default App;
