@@ -124,20 +124,6 @@ class App extends Component {
   }
 }
 
-/*
-const Search = ({value, onChange, onSubmit, children}) => 
-  <form className="my-form" onSubmit={onSubmit}>
-    <input 
-    type="text"
-    value={value}
-    onChange={onChange}
-    />
-    <button type="submit">
-      {children}
-    </button>
-  </form>
-*/
-
 class Search extends Component {
 
   render() {
