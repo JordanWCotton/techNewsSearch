@@ -18,7 +18,8 @@ class App extends Component {
     this.state = { //This allows state to be set.
       result: null,
       searchKey: '',
-      searchTerm: defaultSearch, //Place a variable here in the future
+      searchTerm: defaultSearch,
+      isLoading: false
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -59,11 +60,14 @@ class App extends Component {
       results: { 
         ...results,
         [searchKey]: { hits: updatedHits, page}
-      }
+      },
+      isLoading: true
     });
   }
 
   fetchSearchTopStories(searchTerm, page) {
+    this.setState({ isLoading: true });
+
     fetch(API_URL + searchTerm + PAGE_QUERY + page + PAGE_HPP + defaultHPP)
      .then(response => response.json())
      .then(result => this.setSearchTopStories(result));
@@ -95,7 +99,7 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, results, searchKey } = this.state;
+    const { searchTerm, results, searchKey, isLoading } = this.state;
     const page = (results && results[searchKey] && results[searchKey].page) || 0; 
     const list = (results && results[searchKey] && results[searchKey].hits) || [];
 
@@ -115,9 +119,11 @@ class App extends Component {
         />
         : null}
         <div>
-          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          { isLoading ? <Loading />
+          : <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
             More
           </Button>
+          }
         </div>
       </div>
     );
@@ -191,5 +197,9 @@ const Button = ({onClick, className = '', children}) =>
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
   };
+
+
+const Loading = () => 
+  <div>Loading...</div>
 
 export default App;
