@@ -103,6 +103,7 @@ class App extends Component {
     const page = (results && results[searchKey] && results[searchKey].page) || 0; 
     const list = (results && results[searchKey] && results[searchKey].hits) || [];
 
+    console.log(results);
     return ( 
       <div className="App">
         <Search 
@@ -110,7 +111,7 @@ class App extends Component {
         onChange={this.onSearchChange}
         onSubmit={this.onSearchSubmit}
         >
-          Search:
+          Search
         </Search>
         { results ? 
         <Table 
@@ -125,6 +126,7 @@ class App extends Component {
           </Button>
           }
         </div>
+        <span className="input-grp">Powered by HackerNews Article Search API</span>
       </div>
     );
   }
@@ -146,15 +148,18 @@ class Search extends Component {
 
     return (
       <form className="my-form" onSubmit={onSubmit}>
+        <span className="app-title">Tech News Search</span>
+        <div className="input-grp">
         <input
         type="text"
         value={value}
         onChange={onChange}
         ref={(node) => { this.input = node; }}
         />
-        <button type="submit">
+        <button type="submit" className="submit-button">
           {children}
         </button>
+        </div>
       </form>
     )
   }
@@ -168,9 +173,9 @@ const Table = ({list, onDismiss}) => {
         <div>
           <a href={item.url}>{item.title}</a>
         </div>
-        <div>{item.author}</div>
-        <div>{item.num_comments} comments</div>
-        <div>{item.points} points</div>
+        <div><span className="bold-sect">Author:</span> {item.author}</div>
+        <div><span className="bold-sect">Comments:</span> {item.num_comments} comments</div>
+        <div><span className="bold-sect">Points:</span> {item.points}</div>
         <div>
           <Button 
           onClick={() => onDismiss(item.objectID)}>
