@@ -162,7 +162,7 @@ class Search extends Component {
 
 const Table = ({list, onDismiss}) => {
   return (
-    <div>
+    <div className="list-container">
       {list.map(item => 
       <div key={item.objectID} className="list-display">
         <div>

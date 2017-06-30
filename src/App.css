@@ -4,7 +4,8 @@
 
 .list-display {
   background-color: grey;
-  margin-bottom: 30px;
+  margin: 0 auto;
+  width: 40%;
 }
 
 .list-display div {
