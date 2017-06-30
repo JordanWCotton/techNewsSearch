@@ -61,7 +61,7 @@ class App extends Component {
         ...results,
         [searchKey]: { hits: updatedHits, page}
       },
-      isLoading: true
+      isLoading: false
     });
   }
 
