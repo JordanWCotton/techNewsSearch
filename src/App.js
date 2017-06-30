@@ -15,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { //This allows state to be set.
+    this.state = { 
       result: null,
       searchKey: '',
       searchTerm: defaultSearch,
