@@ -126,7 +126,7 @@ class App extends Component {
           </Button>
           }
         </div>
-        <span className="input-grp">Powered by HackerNews Article Search API</span>
+        <span className="stay-right">Powered by HackerNews Article Search API</span>
       </div>
     );
   }
@@ -149,7 +149,7 @@ class Search extends Component {
     return (
       <form className="my-form" onSubmit={onSubmit}>
         <span className="app-title">Tech News Search</span>
-        <div className="input-grp">
+        <div className="stay-right">
         <input
         type="text"
         value={value}
