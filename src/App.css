@@ -6,6 +6,8 @@
 .app-title {
   float: left;
   margin-left: 15px;
+  font-weight: 800;
+  font-size: 24px;
 }
 
 .stay-right {
