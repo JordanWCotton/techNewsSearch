@@ -1,9 +1,21 @@
 .App {
   text-align: center;
+  background-color: #d35400;
+}
+
+.app-title {
+  float: left;
+  margin-left: 15px;
+}
+
+.input-grp {
+  float: right;
+  margin-right: 15px;
 }
 
 .list-display {
-  background-color: grey;
+  background-color: #ecf0f1;
+  border-radius: 5px;
   margin: 0 auto;
   width: 40%;
 }
@@ -13,6 +25,14 @@
 }
 
 .my-form {
-  margin-top: 15px;
-  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+}
+
+.submit-button {
+  margin-left: 5px;
+}
+
+.bold-sect {
+  font-weight: 600;
 }
