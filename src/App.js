@@ -120,9 +120,11 @@ class App extends Component {
         />
         : null}
         <div>
-          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          <ButtonWithLoading 
+          isLoading={isLoading}
+          onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
             More
-          </Button>
+          </ButtonWithLoading>
         </div>
         <span className="stay-right">Powered by HackerNews Article Search API</span>
       </div>
