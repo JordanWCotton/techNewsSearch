@@ -120,11 +120,9 @@ class App extends Component {
         />
         : null}
         <div>
-          { isLoading ? <Loading />
-          : <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
             More
           </Button>
-          }
         </div>
         <span className="stay-right">Powered by HackerNews Article Search API</span>
       </div>
@@ -206,5 +204,10 @@ const Button = ({onClick, className = '', children}) =>
 
 const Loading = () => 
   <div>Loading...</div>
+
+const withLoading = (Component) => ({isLoading, ...rest}) =>
+  isLoading ? <Loading /> : <Component{...rest} />
+
+const ButtonWithLoading = withLoading(Button); 
 
 export default App;
