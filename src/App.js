@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sortBy } from 'lodash';
 import PropTypes from 'prop-types';
 import './App.css';
 
@@ -10,6 +11,14 @@ const defaultPage = 0;
 const defaultSearch = 'redux';
 const defaultHPP = '40';
 
+const SORTS = {
+  NONE: list => list,
+  TITLE: list => sortBy(list, 'title'),
+  AUTHOR: list => sortBy(list,'author'),
+  COMMENTS: list => sortBy(list, 'num_comments').reverse(),
+  POINTS: list => sortBy(list, 'points').reverse(),
+}
+
 class App extends Component {
 
   constructor(props) {
@@ -19,7 +28,8 @@ class App extends Component {
       result: null,
       searchKey: '',
       searchTerm: defaultSearch,
-      isLoading: false
+      isLoading: false,
+      sortKey: 'NONE',
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -28,6 +38,11 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+    this.onSort = this.onSort.bind(this);
+  }
+
+  onSort(sortKey) {
+    this.setState({ sortKey });
   }
 
   needsToSearchTopStories(searchTerm) {
@@ -116,6 +131,8 @@ class App extends Component {
         { results ? 
         <Table 
         list={list}
+        onSort={this.onSort}
+        sortKey={sortKey}
         onDismiss={this.onDismiss}
         />
         : null}
@@ -165,10 +182,43 @@ class Search extends Component {
   }
 }
 
-const Table = ({list, onDismiss}) => {
+const Table = ({list, onSort, sortKey, onDismiss}) => {
   return (
     <div className="list-container">
-      {list.map(item => 
+      <div>
+      <span>
+        <Sort 
+        sortKey={'TITLE'}
+        onSort={onSort}
+        >
+        Title
+        </Sort>
+      </span>
+      <span>
+        <Sort 
+        sortKey={'AUTHOR'}
+        onSort={onSort}
+        >
+        Author
+        </Sort>
+      </span>
+      <span>
+        <Sort 
+        sortKey={'COMMENTS'}
+        onSort={onSort}
+        >
+        Comments
+        </Sort>
+      </span><span>
+        <Sort 
+        sortKey={'POINTS'}
+        onSort={onSort}
+        >
+        Points
+        </Sort>
+      </span>
+      </div> 
+      {SORTS[sortKey](list).map(item => 
       <div key={item.objectID} className="list-display">
         <div>
           <a href={item.url}>{item.title}</a>
