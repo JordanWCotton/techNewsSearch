@@ -188,7 +188,7 @@ class Search extends Component {
 
 const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
   const sortedList = SORTS[sortKey](list);
-  const reverseSortedList = isSortReverse ? sortedList.reverse() : sortedList;
+  const finalList = isSortReverse ? sortedList.reverse() : sortedList;
 
   return (
     <div className="list-container">
@@ -225,7 +225,7 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
         </Sort>
       </span>
       </div> 
-      {reverseSortedList.map(item => 
+      {finalList.map(item => 
       <div key={item.objectID} className="list-display">
         <div>
           <a href={item.url}>{item.title}</a>
