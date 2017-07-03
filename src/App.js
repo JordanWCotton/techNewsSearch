@@ -238,6 +238,11 @@ const Table = ({list, onSort, sortKey, onDismiss}) => {
   );
 }
 
+const Sort = ({sortKey, onSort, children}) =>
+ <Button onClick={() => onSort(sortKey)}>
+   {children}
+ </Button>
+
 const Button = ({onClick, className = '', children}) => 
   <button 
   onClick={onClick}
