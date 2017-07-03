@@ -35,6 +35,10 @@
   margin-left: 5px;
 }
 
+.active-btn {
+  background-color: red;
+}
+
 .bold-sect {
   font-weight: 600;
 }

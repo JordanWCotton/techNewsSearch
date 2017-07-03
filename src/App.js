@@ -197,6 +197,7 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
         <Sort 
         sortKey={'TITLE'}
         onSort={onSort}
+        activeKey={sortKey}
         >
         Title
         </Sort>
@@ -205,6 +206,7 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
         <Sort 
         sortKey={'AUTHOR'}
         onSort={onSort}
+        activeKey={sortKey}
         >
         Author
         </Sort>
@@ -213,6 +215,7 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
         <Sort 
         sortKey={'COMMENTS'}
         onSort={onSort}
+        activeKey={sortKey}
         >
         Comments
         </Sort>
@@ -220,6 +223,7 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
         <Sort 
         sortKey={'POINTS'}
         onSort={onSort}
+        activeKey={sortKey}
         >
         Points
         </Sort>
@@ -245,10 +249,23 @@ const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
   );
 }
 
-const Sort = ({sortKey, onSort, children}) =>
- <Button onClick={() => onSort(sortKey)}>
-   {children}
- </Button>
+const Sort = ({sortKey, onSort, activeSort, children}) => {
+  let sortClass = '';
+
+  if (sortKey === activeSort) {
+    sortClass = 'active-btn';
+  }
+
+  return (
+    <Button 
+    onClick={() => onSort(sortKey)}
+    className={sortClass}
+    >
+      {children}
+    </Button>
+  )
+}
+ 
 
 const Button = ({onClick, className = '', children}) => 
   <button 
