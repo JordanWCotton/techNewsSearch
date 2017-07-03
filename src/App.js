@@ -30,6 +30,7 @@ class App extends Component {
       searchTerm: defaultSearch,
       isLoading: false,
       sortKey: 'NONE',
+      isSortReverse: false,
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -41,8 +42,10 @@ class App extends Component {
     this.onSort = this.onSort.bind(this);
   }
 
+  //Sets sortKey in the state to the passed value, after checking to see if this needs to be a reverse sort and display
   onSort(sortKey) {
-    this.setState({ sortKey });
+    const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse; 
+    this.setState({ sortKey, isSortReverse });
   }
 
   needsToSearchTopStories(searchTerm) {
@@ -114,7 +117,7 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, results, searchKey, isLoading, sortKey } = this.state;
+    const { searchTerm, results, searchKey, isLoading, sortKey, isSortReverse } = this.state;
     const page = (results && results[searchKey] && results[searchKey].page) || 0; 
     const list = (results && results[searchKey] && results[searchKey].hits) || [];
 
@@ -134,6 +137,7 @@ class App extends Component {
         onSort={this.onSort}
         sortKey={sortKey}
         onDismiss={this.onDismiss}
+        isSortReverse={isSortReverse}
         />
         : null}
         <div>
@@ -182,7 +186,10 @@ class Search extends Component {
   }
 }
 
-const Table = ({list, onSort, sortKey, onDismiss}) => {
+const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
+  const sortedList = SORTS[sortKey](list);
+  const reverseSortedList = isSortReverse ? sortedList.reverse() : sortedList;
+
   return (
     <div className="list-container">
       <div>
@@ -218,7 +225,7 @@ const Table = ({list, onSort, sortKey, onDismiss}) => {
         </Sort>
       </span>
       </div> 
-      {SORTS[sortKey](list).map(item => 
+      {reverseSortedList.map(item => 
       <div key={item.objectID} className="list-display">
         <div>
           <a href={item.url}>{item.title}</a>
