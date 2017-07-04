@@ -186,67 +186,79 @@ class Search extends Component {
   }
 }
 
-const Table = ({list, onSort, sortKey, onDismiss, isSortReverse}) => {
-  const sortedList = SORTS[sortKey](list);
-  const finalList = isSortReverse ? sortedList.reverse() : sortedList;
+class Table extends Component {
 
-  return (
-    <div className="list-container">
-      <div>
-      <span>
-        <Sort 
-        sortKey={'TITLE'}
-        onSort={onSort}
-        activeKey={sortKey}
-        >
-        Title
-        </Sort>
-      </span>
-      <span>
-        <Sort 
-        sortKey={'AUTHOR'}
-        onSort={onSort}
-        activeKey={sortKey}
-        >
-        Author
-        </Sort>
-      </span>
-      <span>
-        <Sort 
-        sortKey={'COMMENTS'}
-        onSort={onSort}
-        activeKey={sortKey}
-        >
-        Comments
-        </Sort>
-      </span><span>
-        <Sort 
-        sortKey={'POINTS'}
-        onSort={onSort}
-        activeKey={sortKey}
-        >
-        Points
-        </Sort>
-      </span>
-      </div> 
-      {finalList.map(item => 
-      <div key={item.objectID} className="list-display">
+  render() {
+    const {
+      list,
+      sortKey,
+      isSortReverse,
+      onSort,
+      onDismiss
+    } = this.props;
+
+    const sortedList = SORTS[sortKey](list);
+    const finalList = isSortReverse ? sortedList.reverse() : sortedList;
+
+    return (
+      <div className="list-container">
         <div>
-          <a href={item.url}>{item.title}</a>
-        </div>
-        <div><span className="bold-sect">Author:</span> {item.author}</div>
-        <div><span className="bold-sect">Comments:</span> {item.num_comments} comments</div>
-        <div><span className="bold-sect">Points:</span> {item.points}</div>
-        <div>
-          <Button 
-          onClick={() => onDismiss(item.objectID)}>
-          Dismiss
-          </Button>
-        </div>
+          <span>
+            <Sort 
+            sortKey={'TITLE'}
+            onSort={onSort}
+            activeKey={sortKey}
+            >
+              Title
+            </Sort>
+          </span>
+          <span>
+            <Sort 
+            sortKey={'AUTHOR'}
+            onSort={onSort}
+            activeKey={sortKey}
+            >
+              Author
+            </Sort>
+          </span>
+          <span>
+            <Sort 
+            sortKey={'COMMENTS'}
+            onSort={onSort}
+            activeKey={sortKey}
+            >
+              Comments
+            </Sort>
+          </span>
+          <span>
+            <Sort 
+            sortKey={'POINTS'}
+            onSort={onSort}
+            activeKey={sortKey}
+            >
+              Points
+            </Sort>
+          </span>
+        </div> 
+        {finalList.map(item => 
+          <div key={item.objectID} className="list-display">
+            <div>
+              <a href={item.url}>{item.title}</a>
+            </div>
+            <div><span className="bold-sect">Author:</span> {item.author}</div>
+            <div><span className="bold-sect">Comments:</span> {item.num_comments} comments</div>
+            <div><span className="bold-sect">Points:</span> {item.points}</div>
+            <div>
+              <Button 
+              onClick={() => onDismiss(item.objectID)}>
+              Dismiss
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
-      )}
-    </div>
-  );
+    );
+  }
 }
 
 const Sort = ({sortKey, onSort, activeSort, children}) => {
