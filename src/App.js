@@ -29,8 +29,6 @@ class App extends Component {
       searchKey: '',
       searchTerm: defaultSearch,
       isLoading: false,
-      sortKey: 'NONE',
-      isSortReverse: false,
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -39,13 +37,6 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
-    this.onSort = this.onSort.bind(this);
-  }
-
-  //Sets sortKey in the state to the passed value, after checking to see if this needs to be a reverse sort and display
-  onSort(sortKey) {
-    const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse; 
-    this.setState({ sortKey, isSortReverse });
   }
 
   needsToSearchTopStories(searchTerm) {
@@ -121,7 +112,6 @@ class App extends Component {
     const page = (results && results[searchKey] && results[searchKey].page) || 0; 
     const list = (results && results[searchKey] && results[searchKey].hits) || [];
 
-    console.log(results);
     return ( 
       <div className="App">
         <Search 
@@ -188,14 +178,34 @@ class Search extends Component {
 
 class Table extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sortKey: 'NONE',
+      isSortReverse: false,
+    };
+
+    this.onSort = this.onSort.bind(this);
+  }
+
+  //Sets sortKey in the state to the passed value, after checking to see if this needs to be a reverse sort and display
+  onSort(sortKey) {
+    const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse; 
+    this.setState({ sortKey, isSortReverse });
+  }
+
   render() {
+
     const {
       list,
+      onDismiss,
+    } = this.props;
+
+    const {
       sortKey,
       isSortReverse,
-      onSort,
-      onDismiss
-    } = this.props;
+    } = this.state;
 
     const sortedList = SORTS[sortKey](list);
     const finalList = isSortReverse ? sortedList.reverse() : sortedList;
@@ -206,7 +216,7 @@ class Table extends Component {
           <span>
             <Sort 
             sortKey={'TITLE'}
-            onSort={onSort}
+            onSort={this.onSort}
             activeKey={sortKey}
             >
               Title
@@ -215,7 +225,7 @@ class Table extends Component {
           <span>
             <Sort 
             sortKey={'AUTHOR'}
-            onSort={onSort}
+            onSort={this.onSort}
             activeKey={sortKey}
             >
               Author
@@ -224,7 +234,7 @@ class Table extends Component {
           <span>
             <Sort 
             sortKey={'COMMENTS'}
-            onSort={onSort}
+            onSort={this.onSort}
             activeKey={sortKey}
             >
               Comments
@@ -233,7 +243,7 @@ class Table extends Component {
           <span>
             <Sort 
             sortKey={'POINTS'}
-            onSort={onSort}
+            onSort={this.onSort}
             activeKey={sortKey}
             >
               Points
