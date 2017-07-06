@@ -9,3 +9,5 @@ I created this project as a code sandbox to practice and learn React. The idea f
 This app utilizes Enzyme for unit tests, and Lodash for sorting utility.
 
 Information about the HackerNews Search API can be found at: https://github.com/HackerNews/API
+
+This application is hosted for public use on Heroku, and is available at https://technewssearch.herokuapp.com/
