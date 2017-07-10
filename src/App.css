@@ -51,10 +51,12 @@
 @media only screen and (max-width: 750px) {
 
   .app-title {
+    float: initial;
     margin: 0 auto;
   }
 
   .stay-right {
+    float: initial;
     margin: 0 auto;
   }
 }
