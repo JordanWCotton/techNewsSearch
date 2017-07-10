@@ -46,3 +46,15 @@
 .sort-class {
   margin: 0 auto;
 }
+
+/* Mobile Styles */
+@media only screen and (max-width: 750px) {
+
+  .app-title {
+    margin: 0 auto;
+  }
+
+  .stay-right {
+    margin: 0 auto;
+  }
+}
