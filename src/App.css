@@ -48,5 +48,8 @@
 /* Mobile Styles */
 @media only screen and (max-width: 750px) {
 
+  .list-display {
+    width: 70%;
+  }
 
 }
