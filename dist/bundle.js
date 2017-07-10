@@ -11056,7 +11056,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, ".App {\n  text-align: center;\n  background-color: #d35400;\n}\n\n.app-title {\n  font-weight: 800;\n  font-size: 24px;\n}\n\n.list-display {\n  background-color: #ecf0f1;\n  border-radius: 5px;\n  margin: 0 auto;\n  width: 40%;\n}\n\n.list-display div {\n  margin-bottom: 5px;\n}\n\n.my-form {\n  padding-top: 15px;\n  padding-bottom: 50px;\n}\n\n.submit-button {\n  margin-left: 5px;\n}\n\n.active-btn {\n  background-color: red;\n}\n\n.bold-sect {\n  font-weight: 600;\n}\n\n.sortBtn-div {\n  margin: 0 auto;\n}\n\n.sortClass {\n  border-radius: 5px;\n  margin-right: 1px;\n}\n\n/* Mobile Styles */\n@media only screen and (max-width: 750px) {\n\n\n}", ""]);
+exports.push([module.i, ".App {\n  text-align: center;\n  background-color: #d35400;\n}\n\n.app-title {\n  font-weight: 800;\n  font-size: 24px;\n}\n\n.list-display {\n  background-color: #ecf0f1;\n  border-radius: 5px;\n  margin: 0 auto;\n  width: 40%;\n}\n\n.list-display div {\n  margin-bottom: 5px;\n}\n\n.my-form {\n  padding-top: 15px;\n  padding-bottom: 50px;\n}\n\n.submit-button {\n  margin-left: 5px;\n}\n\n.active-btn {\n  background-color: red;\n}\n\n.bold-sect {\n  font-weight: 600;\n}\n\n.sortBtn-div {\n  margin: 0 auto;\n}\n\n.sortClass {\n  border-radius: 5px;\n  margin-right: 1px;\n}\n\n/* Mobile Styles */\n@media only screen and (max-width: 750px) {\n\n  .list-display {\n    width: 70%;\n  }\n\n}", ""]);
 
 // exports
 
