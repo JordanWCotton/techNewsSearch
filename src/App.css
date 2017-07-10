@@ -4,15 +4,8 @@
 }
 
 .app-title {
-  float: left;
-  margin-left: 15px;
   font-weight: 800;
   font-size: 24px;
-}
-
-.stay-right {
-  float: right;
-  margin-right: 15px;
 }
 
 .list-display {
@@ -43,20 +36,17 @@
   font-weight: 600;
 }
 
-.sort-class {
+.sortBtn-div {
   margin: 0 auto;
+}
+
+.sortClass {
+  border-radius: 5px;
+  margin-right: 1px;
 }
 
 /* Mobile Styles */
 @media only screen and (max-width: 750px) {
 
-  .app-title {
-    float: initial;
-    margin: 0 auto;
-  }
 
-  .stay-right {
-    float: initial;
-    margin: 0 auto;
-  }
 }

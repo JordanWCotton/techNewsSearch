@@ -212,7 +212,7 @@ class Table extends Component {
 
     return (
       <div className="list-container">
-        <div className="sort-class">
+        <div className="sortBtn-div">
           <span>
             <Sort 
             sortKey={'TITLE'}
@@ -281,7 +281,7 @@ const Sort = ({sortKey, onSort, activeSort, children}) => {
   return (
     <Button 
     onClick={() => onSort(sortKey)}
-    className={}
+    className={sortClass}
     >
       {children}
     </Button>
