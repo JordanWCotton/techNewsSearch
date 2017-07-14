@@ -6,13 +6,15 @@
     "npm": "4.3.0"
   },
   "dependencies": {
-    "css-loader": "^0.28.1",
+    "css-loader": "^0.28.4",
     "express": "^4.15.3",
+    "html-webpack-plugin": "^2.29.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "style-loader": "^0.17.0"
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",
