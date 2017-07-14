@@ -287,7 +287,6 @@ const Sort = ({sortKey, onSort, activeSort, children}) => {
     </Button>
   )
 }
- 
 
 const Button = ({onClick, className = '', children}) => 
   <button 
@@ -303,7 +302,6 @@ const Button = ({onClick, className = '', children}) =>
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
   };
-
 
 const Loading = () => 
   <div>Loading...</div>
