@@ -60,8 +60,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "webpack",
-    "postinstall": "webpack"
+    "build": "webpack"
   },
   "babel": {
     "presets": [
