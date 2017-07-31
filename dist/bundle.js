@@ -10683,7 +10683,7 @@ var App = function (_Component) {
         ),
         _react2.default.createElement(
           'span',
-          { className: 'stay-right' },
+          { className: 'bottomText' },
           'Powered by HackerNews Article Search API'
         )
       );
@@ -10859,7 +10859,7 @@ var Table = function (_Component3) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: item.url },
+                { href: item.url, className: 'linkClass' },
                 item.title
               )
             ),
@@ -10924,7 +10924,7 @@ var Sort = function Sort(_ref) {
       activeSort = _ref.activeSort,
       children = _ref.children;
 
-  var sortClass = '';
+  var sortClass = 'sortButton';
 
   if (sortKey === activeSort) {
     sortClass = 'active-btn';
@@ -10945,7 +10945,7 @@ var Sort = function Sort(_ref) {
 var Button = function Button(_ref2) {
   var onClick = _ref2.onClick,
       _ref2$className = _ref2.className,
-      className = _ref2$className === undefined ? '' : _ref2$className,
+      className = _ref2$className === undefined ? 'buttonClass' : _ref2$className,
       children = _ref2.children;
   return _react2.default.createElement(
     'button',
@@ -10967,7 +10967,7 @@ Button.propTypes = {
 var Loading = function Loading() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'bottomText' },
     'Loading...'
   );
 };
@@ -11056,7 +11056,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, ".App {\n  text-align: center;\n  background-color: #d35400;\n}\n\n.app-title {\n  font-weight: 800;\n  font-size: 24px;\n}\n\n.list-display {\n  background-color: #ecf0f1;\n  border-radius: 5px;\n  margin: 0 auto;\n  width: 40%;\n}\n\n.list-display div {\n  margin-bottom: 5px;\n}\n\n.my-form {\n  padding-top: 15px;\n  padding-bottom: 50px;\n}\n\n.submit-button {\n  margin-left: 5px;\n}\n\n.active-btn {\n  background-color: red;\n}\n\n.bold-sect {\n  font-weight: 600;\n}\n\n.sortBtn-div {\n  margin: 0 auto;\n}\n\n.sortClass {\n  border-radius: 5px;\n  margin-right: 1px;\n}\n\n/* Mobile Styles */\n@media only screen and (max-width: 750px) {\n\n  .list-display {\n    width: 70%;\n  }\n\n}", ""]);
+exports.push([module.i, ".App {\n  text-align: center;\n  background-color: #5E412F; /**/\n}\n\n.app-title {\n  font-weight: 800;\n  font-size: 24px;\n  color: #F2F2F2;\n}\n\n.list-display {\n  background-color: #FCEBB6; /**/\n  border-radius: 5px;\n  margin: 0 auto;\n  width: 40%;\n}\n\n.list-display div {\n  margin-bottom: 5px;\n}\n\n.my-form {\n  padding-top: 15px;\n  padding-bottom: 50px;\n}\n\n.submit-button {\n  margin-left: 5px;\n  background-color: #78C0A8; /**/\n  border: none;\n  border-radius: 5px;\n}\n\n.active-btn {\n  border: 1px solid black; /**/\n}\n\n.bold-sect {\n  font-weight: 600;\n}\n\n.sortBtn-div {\n  margin: 0 auto;\n}\n\n.buttonClass {\n  background-color: #F0A830; /**/\n  border: none;\n  border-radius: 5px;\n}\n\n.linkClass {\n  text-decoration: none;\n}\n\n.sortButton {\n  background-color: #F0A830; /**/\n  margin-bottom: 2px;\n  border-radius: 5px;\n  margin-right: 1px; \n  border: none;\n}\n\n.bottomText {\n  color: #F2F2F2;\n}\n\n/* Mobile Styles */\n@media only screen and (max-width: 750px) {\n\n  .list-display {\n    width: 70%;\n  }\n\n}", ""]);
 
 // exports
 
@@ -11070,7 +11070,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  padding: 0;\n  font-family: sans-serif;\n  background-color: #d35400;\n}\n", ""]);
+exports.push([module.i, "* {\n     font-family: 'Libre Baskerville', serif;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background-color: #5E412F;\n}\n", ""]);
 
 // exports
 

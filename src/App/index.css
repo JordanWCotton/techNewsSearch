@@ -1,15 +1,16 @@
 .App {
   text-align: center;
-  background-color: #d35400;
+  background-color: #5E412F; 
 }
 
 .app-title {
   font-weight: 800;
   font-size: 24px;
+  color: #F2F2F2;
 }
 
 .list-display {
-  background-color: #ecf0f1;
+  background-color: #FCEBB6; 
   border-radius: 5px;
   margin: 0 auto;
   width: 40%;
@@ -26,10 +27,13 @@
 
 .submit-button {
   margin-left: 5px;
+  background-color: #78C0A8; 
+  border: none;
+  border-radius: 5px;
 }
 
 .active-btn {
-  background-color: red;
+  border: 1px solid black; 
 }
 
 .bold-sect {
@@ -40,9 +44,26 @@
   margin: 0 auto;
 }
 
-.sortClass {
+.buttonClass {
+  background-color: #F0A830; 
+  border: none;
   border-radius: 5px;
-  margin-right: 1px;
+}
+
+.linkClass {
+  text-decoration: none;
+}
+
+.sortButton {
+  background-color: #F0A830; 
+  margin-bottom: 2px;
+  border-radius: 5px;
+  margin-right: 1px; 
+  border: none;
+}
+
+.bottomText {
+  color: #F2F2F2;
 }
 
 /* Mobile Styles */

@@ -137,7 +137,7 @@ class App extends Component {
             More
           </ButtonWithLoading>
         </div>
-        <span className="stay-right">Powered by HackerNews Article Search API</span>
+        <span className="bottomText">Powered by HackerNews Article Search API</span>
       </div>
     );
   }
@@ -253,7 +253,7 @@ class Table extends Component {
         {finalList.map(item => 
           <div key={item.objectID} className="list-display">
             <div>
-              <a href={item.url}>{item.title}</a>
+              <a href={item.url} className="linkClass">{item.title}</a>
             </div>
             <div><span className="bold-sect">Author:</span> {item.author}</div>
             <div><span className="bold-sect">Comments:</span> {item.num_comments} comments</div>
@@ -272,7 +272,7 @@ class Table extends Component {
 }
 
 const Sort = ({sortKey, onSort, activeSort, children}) => {
-  let sortClass = '';
+  let sortClass = 'sortButton';
 
   if (sortKey === activeSort) {
     sortClass = 'active-btn';
@@ -288,7 +288,7 @@ const Sort = ({sortKey, onSort, activeSort, children}) => {
   )
 }
 
-const Button = ({onClick, className = '', children}) => 
+const Button = ({onClick, className = 'buttonClass', children}) => 
   <button 
   onClick={onClick}
   className={className}
@@ -304,7 +304,7 @@ const Button = ({onClick, className = '', children}) =>
   };
 
 const Loading = () => 
-  <div>Loading...</div>
+  <div className="bottomText">Loading...</div>
 
 const withLoading = (Component) => ({isLoading, ...rest}) =>
   isLoading ? <Loading /> : <Component{...rest} />
